@@ -15,6 +15,15 @@ char notchR2 = 'I';
 std::string r3 = "XYZWVUTSRQPONMLKJIHGFEDCBA";
 char notchR3 = 'L';
 
+//CHATGPT
+void ajustarRotor(std::string &rotor, char letra) {
+    size_t pos = rotor.find(letra);
+    if (pos != std::string::npos) {
+        rotor = rotor.substr(pos) + rotor.substr(0, pos);
+    }
+}
+
+
 // 1. Quitar puntos, comas y simbolos y letras especiales. 
 
 void quitarSimbolosEspeciales(std::string &mensajeParaCifrar) {
@@ -85,6 +94,19 @@ int main() {
 
 	std::string mensajeParaCifrar;
 
+	char posR1, posR2, posR3;
+
+	std::cout << "Introduce la posicion inicial de los rotores (ejemplo: A B C): ";
+	std::cin >> posR1 >> posR2 >> posR3;
+
+	ajustarRotor(r1, posR1);
+	ajustarRotor(r2, posR2);
+	ajustarRotor(r3, posR3);
+
+	std::cout << "[INFO] Rotor 1 ajustado: " << r1 << std::endl;
+	std::cout << "[INFO] Rotor 2 ajustado: " << r2 << std::endl;
+	std::cout << "[INFO] Rotor 3 ajustado: " << r3 << std::endl;
+
 	std::cout << " Dame un mensaje para cifrar: " << std::endl;
 	std::getline(std::cin, mensajeParaCifrar);
 
@@ -101,6 +123,7 @@ int main() {
 
 	mensajeParaCifrar = agruparLetras(mensajeParaCifrar);
 	std::cout << "[INFO] Agrupamos las letras en grupos de 5:" << mensajeParaCifrar << std::endl;
+
 
 
 }
