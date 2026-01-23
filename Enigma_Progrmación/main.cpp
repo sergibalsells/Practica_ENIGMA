@@ -69,12 +69,12 @@ std::string agruparLetras(const std::string &mensaje) {
     int count = 0;
 
     for (size_t i = 0; i < mensaje.length(); i++) {
-        resultado += mensaje[i];
-        contador++;
+        result += mensaje[i];
+        count++;
 
-        if (contador == 5) {
-            resultado += ' '; // add a space after every 5 letters
-            contador = 0;
+        if (count == 5) {
+            result += ' '; // add a space after every 5 letters
+            count = 0;
         }
     }
 
@@ -92,15 +92,15 @@ int main() {
 	std::cout << "[INFO] Quitamos los simbolos especiales:" << mensajeParaCifrar << std::endl;
 
 	
-	quitarAcentos(mensajeParaCifrar);
+	mensajeParaCifrar = quitarAcentos(mensajeParaCifrar);
 	std::cout << "[INFO] Quitamos los acentos:" << mensajeParaCifrar << std::endl;
 
 
-	convertirMayusculas(mensajeParaCifrar);
+	mensajeParaCifrar =convertirMayusculas(mensajeParaCifrar);
 	std::cout << "[INFO] Convertimos en mayuscula:" << mensajeParaCifrar << std::endl;
 
-	agruparLetras(mensajeParaCifrar);
+	mensajeParaCifrar = agruparLetras(mensajeParaCifrar);
 	std::cout << "[INFO] Agrupamos las letras en grupos de 5:" << mensajeParaCifrar << std::endl;
 
-	
+
 }
