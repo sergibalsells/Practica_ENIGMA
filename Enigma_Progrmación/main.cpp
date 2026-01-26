@@ -137,12 +137,15 @@ void asignacionMenuRotores() {
             break;
         case 2:
             editarRotor(rotor1, "Rotor 1");
+            std::cout << "[INFO] Rotor 1 ajustado: " << rotor1.mapeo << std::endl;
             break;
         case 3:
             editarRotor(rotor2, "Rotor 2");
+            std::cout << "[INFO] Rotor 2 ajustado: " << rotor2.mapeo << std::endl;
             break;
         case 4:
             editarRotor(rotor3, "Rotor 3");
+            std::cout << "[INFO] Rotor 3 ajustado: " << rotor3.mapeo << std::endl;
             break;
         case 5:
             guardarRotoresEnArchivos();
@@ -158,16 +161,22 @@ void asignacionMenuRotores() {
 
 // Función para imprimir el menú principal
 void imprimirMenuPrincipal() {
-    std::cout << "\n=== MENÚ PRINCIPAL ===\n";
-    std::cout << "1. Gestión de rotores\n";
-    std::cout << "2. Cifrar/Descifrar mensaje\n";
-    std::cout << "0. Salir\n";
-    std::cout << "Selecciona una opción: ";
+
+    //Mostrar opciones de menú
+    std::cout << "       ENIGMA\n";
+    std::cout << "-------------------\n";
+    std::cout << "1. Cifrar mensaje\n";
+    std::cout << "2. Descifrar mensaje\n";
+    std::cout << "3. Editar rotores\n";
+    std::cout << "4. Salir\n";
+    
 }
 
-// Función para manejar el menú principal
+// Función para redigir al usuario a la opcion introducida
 void asignacionMenuPrincipal() {
+
     int opcion;
+
     do {
         imprimirMenuPrincipal();
         std::cin >> opcion;
@@ -175,50 +184,43 @@ void asignacionMenuPrincipal() {
 
         switch (opcion) {
         case 1:
+            
+            std::cout<<"cifrado aún no implementado"<< std::endl;
+
+            break;
+
+        case 2: {
+
+            std::cout<<"descifrado aún no implementado"<< std::endl;
+
+            break;
+
+        }
+        case 3:
+
             asignacionMenuRotores();
             break;
-        case 2: {
-            // Lógica de cifrado/descifrado (tu código original)
-            std::string mensajeParaCifrar;
-            char posR1, posR2, posR3;
 
-            std::cout << "Introduce la posición inicial de los rotores (ejemplo: A B C): ";
-            std::cin >> posR1 >> posR2 >> posR3;
-            std::cin.ignore();
+        case 4:
 
-            // Ajustar rotores (usar tu función ajustarRotor)
-            // ajustarRotor(rotor1.mapeo, posR1);
-            // ajustarRotor(rotor2.mapeo, posR2);
-            // ajustarRotor(rotor3.mapeo, posR3);
-
-            std::cout << "[INFO] Rotor 1 ajustado: " << rotor1.mapeo << std::endl;
-            std::cout << "[INFO] Rotor 2 ajustado: " << rotor2.mapeo << std::endl;
-            std::cout << "[INFO] Rotor 3 ajustado: " << rotor3.mapeo << std::endl;
-
-            std::cout << "Dame un mensaje para cifrar: ";
-            std::getline(std::cin, mensajeParaCifrar);
-
-            // Procesar mensaje (usar tus funciones existentes)
-            // quitarSimbolosEspeciales(mensajeParaCifrar);
-            // mensajeParaCifrar = quitarAcentos(mensajeParaCifrar);
-            // mensajeParaCifrar = convertirMayusculas(mensajeParaCifrar);
-            // mensajeParaCifrar = agruparLetras(mensajeParaCifrar);
-
-            std::cout << "[INFO] Mensaje procesado: " << mensajeParaCifrar << std::endl;
-            break;
-        }
-        case 0:
             std::cout << "Saliendo del programa...\n";
             break;
+
         default:
+
             std::cout << "[ERROR] Opción no válida. Intenta de nuevo.\n";
         }
-    } while (opcion != 0);
+
+    } while (opcion != 4);
 }
 
 // Función principal
 int main() {
+
     std::cout << "=== MÁQUINA ENIGMA - FASE 1: GESTIÓN DE ROTORES ===\n";
+
     asignacionMenuPrincipal();
+    
+
     return 0;
 }
