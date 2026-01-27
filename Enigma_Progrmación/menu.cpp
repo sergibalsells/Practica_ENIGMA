@@ -15,6 +15,30 @@ void imprimirMenuPrincipal() {
     std::cout << "4. Salir\n";
     
 }
+//CHATGPT
+void ajustarRotor(std::string &rotor, char letra) {
+    size_t pos = rotor.find(letra);
+    if (pos != std::string::npos) {
+        rotor = rotor.substr(pos) + rotor.substr(0, pos);
+    }
+}
+
+void opcionDeCifrado (){ //configuración de la ventana.
+
+    char ventana1, ventana2, ventana3;
+
+    std::cout << "Introduce la ventana inicial ej: A C B):";
+    std::cin >> ventana1 >> ventana2 >> ventana3;
+
+    ventana1 = std::toupper(ventana1);
+    ventana2 = std::toupper(ventana2);
+    ventana3 = std::toupper(ventana3);
+
+    ajustarRotor(rotor1.mapeo, ventana1);
+    ajustarRotor(rotor2.mapeo, ventana2);
+    ajustarRotor(rotor3.mapeo, ventana3);
+
+}
 
 // Función para redigir al usuario a la opcion introducida
 void asignacionMenuPrincipal() {
@@ -27,13 +51,15 @@ void asignacionMenuPrincipal() {
     while (true){
         if (opcionMenu == 1) {
 
-            std::cout << "cifrado aún no implementado" << std::endl;
+            std::cout << "Cifrado" << std::endl;
+            opcionDeCifrado ();
             return;    //quan s'hagi gestionat el xifrat redirigir usuari allà per ara ha de sortir del menu
 
         }
         else if (opcionMenu == 2) {
 
-            std::cout << "descifrado aún no implementado" << std::endl;
+            std::cout << "Descifrado " << std::endl;
+            opcionDeCifrado ();
             return;   //quan s'hagi gestionat el desxifrat redirigir usuari allà per ara ha de sortir del menu
     
 
