@@ -14,7 +14,6 @@ int main() {
 
     std::cout << "=== MÁQUINA ENIGMA - FASE 1: GESTIÓN DE ROTORES ===\n";
 
-    
 
     return 0;
 }

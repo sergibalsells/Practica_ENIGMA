@@ -73,3 +73,20 @@ std::string agruparLetras(std::string &mensajeParaCifrar) {
     std::cout << "[INFO] Agrupamos las letras en grupos de 5:" << mensajeParaCifrar << std::endl;
     return result;
 }
+
+void soloLetras(std::string &mensajeParaCifrar) {
+
+    std::string soloLetras;
+
+    for (size_t i = 0; i < mensajeParaCifrar.length(); i++) {
+
+        char c = mensajeParaCifrar[i];
+
+        if (isalpha(c)) {  // if it is a lettter      
+
+            soloLetras += c;
+        }
+    }
+
+    mensajeParaCifrar = soloLetras;  //add to string 
+}

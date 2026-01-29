@@ -153,4 +153,32 @@ void asignacionMenuRotores() {
         }
     } while (opcion != 0);
 }
+//CHATGPT
+bool cargarRotorDesdeArchivo(Rotor& rotor, const std::string& nombreArchivo) {
+    std::ifstream archivo(nombreArchivo);
+    if (!archivo.is_open()) {
+        std::cerr << "[ERROR] No se pudo abrir " << nombreArchivo << "\n";
+        return false;
+    }
 
+    std::string mapeo;
+    std::string lineaNotch;
+
+    std::getline(archivo, mapeo);
+
+    char notch = 'Z'; // valor por defecto
+    if (std::getline(archivo, lineaNotch) && !lineaNotch.empty()) {
+        notch = lineaNotch[0];
+    }
+
+    archivo.close();
+
+    if (!validarRotor(mapeo, notch)) {
+        std::cerr << "[ERROR] Rotor inválido en " << nombreArchivo << "\n";
+        return false;
+    }
+
+    rotor.mapeo = mapeo;
+    rotor.notch = toupper(notch);
+    return true;
+}

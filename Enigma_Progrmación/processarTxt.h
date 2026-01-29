@@ -14,4 +14,4 @@ std::string agruparLetras(std::string &mensajeParaCifrar);
 
 void ajustarRotor(std::string &rotor, char letra);
 
-
+void soloLetras(std::string &mensajeParaCifrar);

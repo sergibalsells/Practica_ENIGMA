@@ -2,6 +2,8 @@
 #include <cctype>
 #include "Rotores.h"
 #include "menu.h"
+#include "Cifrado.h"
+#include "Descifrado.h"
 
 // Función para imprimir el menú principal
 void imprimirMenuPrincipal() {
@@ -23,7 +25,7 @@ void ajustarRotor(std::string &rotor, char letra) {
     }
 }
 
-void opcionDeCifrado (){ //configuración de la ventana.
+void opcionDeCifrado (){ // Función para la configuración de la ventana.
 
     char ventana1, ventana2, ventana3;
 
@@ -53,6 +55,7 @@ void asignacionMenuPrincipal() {
 
             std::cout << "Cifrado" << std::endl;
             opcionDeCifrado ();
+            introducirMensaje();
             return;    //quan s'hagi gestionat el xifrat redirigir usuari allà per ara ha de sortir del menu
 
         }

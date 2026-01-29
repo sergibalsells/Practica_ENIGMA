@@ -17,9 +17,25 @@ extern Rotor rotor3;
 
 // Declaracion de funciones
 bool validarRotor(const std::string& mapeo, char notch);
+
 void mostrarRotores();
+
 void editarRotor(Rotor& rotor, const std::string& nombre);
+
 void guardarRotorEnArchivo(const Rotor& rotor, const std::string& nombreArchivo);
+
 void guardarRotoresEnArchivos();
 
+bool cargarRotorDesdeArchivo(Rotor& rotor, const std::string& nombreArchivo);
+
+
+/*
+    Posar allà on sigui adequat:
+
+    cargarRotorDesdeArchivo(rotor1, "rotor1.txt");
+    cargarRotorDesdeArchivo(rotor2, "rotor2.txt");
+    cargarRotorDesdeArchivo(rotor3, "rotor3.txt");
+
+    asignacionMenuRotores();
+*/
 #endif // ROTORES_H
