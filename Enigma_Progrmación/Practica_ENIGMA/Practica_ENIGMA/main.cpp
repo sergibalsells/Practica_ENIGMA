@@ -162,4 +162,4 @@ int main() {
     std::cout << "=== MAQUINA ENIGMA - GESTIO DE ROTORS ===\n";
     asignacionMenuRotores();
     return 0;
-}
+} 
