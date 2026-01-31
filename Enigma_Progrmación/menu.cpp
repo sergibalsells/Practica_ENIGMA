@@ -4,10 +4,10 @@
 #include "menu.h"
 #include "Cifrado.h"
 #include "Descifrado.h"
+#include "processarTxt.h"
 
 // Función para imprimir el menú principal
 void imprimirMenuPrincipal() {
-
     //Mostrar opciones de menú
     std::cout << "       ENIGMA\n";
     std::cout << "-------------------\n";
@@ -15,21 +15,13 @@ void imprimirMenuPrincipal() {
     std::cout << "2. Descifrar mensaje\n";
     std::cout << "3. Editar rotores\n";
     std::cout << "4. Salir\n";
-    
-}
-//CHATGPT
-void ajustarRotor(std::string &rotor, char letra) {
-    size_t pos = rotor.find(letra);
-    if (pos != std::string::npos) {
-        rotor = rotor.substr(pos) + rotor.substr(0, pos);
-    }
 }
 
-void opcionDeCifrado (){ // Función para la configuración de la ventana.
-
+// Función para configurar la posición inicial de los rotores
+void opcionDeCifrado() {
     char ventana1, ventana2, ventana3;
 
-    std::cout << "Introduce la ventana inicial ej: A C B):";
+    std::cout << "Introduce La Posiciones de los rotores (ejemplo: A C B):";
     std::cin >> ventana1 >> ventana2 >> ventana3;
 
     ventana1 = std::toupper(ventana1);
@@ -40,48 +32,38 @@ void opcionDeCifrado (){ // Función para la configuración de la ventana.
     ajustarRotor(rotor2.mapeo, ventana2);
     ajustarRotor(rotor3.mapeo, ventana3);
 
+    std::cout << "[INFO] Rotor 1 ajustado: " << rotor1.mapeo << std::endl;
+    std::cout << "[INFO] Rotor 2 ajustado: " << rotor2.mapeo << std::endl;
+    std::cout << "[INFO] Rotor 3 ajustado: " << rotor3.mapeo << std::endl;
 }
 
-// Función para redigir al usuario a la opcion introducida
+// Función para redirigir al usuario a la opción introducida
 void asignacionMenuPrincipal() {
-
     int opcionMenu;
 
-    imprimirMenuPrincipal();
-    std::cin >> opcionMenu;
+    do {
+        imprimirMenuPrincipal();
+        std::cout << "Selecciona una opción: ";
+        std::cin >> opcionMenu;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    while (true){
         if (opcionMenu == 1) {
-
             std::cout << "Cifrado" << std::endl;
-            opcionDeCifrado ();
-            introducirMensaje();
-            return;    //quan s'hagi gestionat el xifrat redirigir usuari allà per ara ha de sortir del menu
-
+            procesoCifrado();  // Llamamos directamente a procesoCifrado
         }
         else if (opcionMenu == 2) {
-
-            std::cout << "Descifrado " << std::endl;
-            opcionDeCifrado ();
-            return;   //quan s'hagi gestionat el desxifrat redirigir usuari allà per ara ha de sortir del menu
-    
-
+            std::cout << "Descifrado" << std::endl;
+            procesoDescifrado();
         }
         else if (opcionMenu == 3) {
-
             asignacionMenuRotores();
-
         }
         else if (opcionMenu == 4) {
-
             std::cout << "Saliendo del programa.." << std::endl;
             return;
-
         }
         else {
-
             std::cout << "Entrada inválida; Por favor introduzca 1, 2, 3 o 4" << std::endl;
-            return;
         }
-    }
+    } while (true);
 }

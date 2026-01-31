@@ -127,7 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cifrado.cpp" />
+    <ClCompile Include="Descifrado.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="processarTxt.cpp" />
+    <ClCompile Include="Rotores.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cifrado.h" />
+    <ClInclude Include="Descifrado.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="processarTxt.h" />
+    <ClInclude Include="Rotores.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

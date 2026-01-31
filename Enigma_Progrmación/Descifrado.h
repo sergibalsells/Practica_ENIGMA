@@ -1,5 +1,6 @@
-#include <iostream>
-#include <cctype>
+#pragma once
+#include <string>
 #include "Rotores.h"
-#include <fstream>
+#include "processarTxt.h"  // Incluimos processarTxt.h para tener acceso a ajustarRotor
 
+void procesoDescifrado();

@@ -1,6 +1,6 @@
-#include <iostream>
-#include <cctype>
+#pragma once
+#include <string>
 #include "Rotores.h"
-#include <fstream>
+#include "processarTxt.h"
 
-void introducirMensaje();
+void procesoCifrado();
