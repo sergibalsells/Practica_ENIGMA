@@ -4,7 +4,7 @@
 #include <limits>
 #include "Descifrado.h"
 #include "Rotores.h"
-#include "processarTxt.h"  // Aquí está definida avanzarRotor
+#include "processarTxt.h"
 
 // Función para pasar un carácter a través de un rotor (en dirección inversa para descifrar)
 char pasarPorRotorInverso(const std::string& rotor, char c) {
@@ -100,6 +100,16 @@ void procesoDescifrado() {
 
     // Agrupar en bloques de 5 letras
     std::string resultadoAgrupado = agruparLetras(resultado);
-    std::cout << "[INFO] Agrupamos las letras en grupos de 5: " << resultadoAgrupado << std::endl;
     std::cout << "[INFO] Mensaje descifrado: " << resultadoAgrupado << std::endl;
+
+    // Guardar el mensaje descifrado en un archivo llamado MensajeDescifrado.txt
+    std::ofstream fitxer("MensajeDescifrado.txt");
+    if (fitxer.is_open()) {
+        fitxer << resultadoAgrupado;
+        fitxer.close();
+        std::cout << "[INFO] Mensaje descifrado guardado en MensajeDescifrado.txt" << std::endl;
+    }
+    else {
+        std::cerr << "[ERROR] No se ha podido abrir MensajeDescifrado.txt" << std::endl;
+    }
 }

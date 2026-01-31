@@ -4,7 +4,23 @@
 #include <limits>
 #include "Cifrado.h"
 #include "Rotores.h"
-#include "processarTxt.h"  // Aquí está definida avanzarRotor
+#include "processarTxt.h"
+
+void introducirMensaje() {
+    std::string mensaje;
+    std::cout << "Introduce un mensaje para cifrar" << std::endl;
+    std::getline(std::cin, mensaje);
+
+    std::ofstream fitxer("Missatge.txt");
+    if (fitxer.is_open()) {
+        fitxer << mensaje;
+        fitxer.close();
+        std::cout << "[INFO] Mensaje guardado en Missatge.txt" << std::endl;
+    }
+    else {
+        std::cerr << "[ERROR] No se ha podido abrir Missatge.txt" << std::endl;
+    }
+}
 
 // Función para cifrar un carácter usando los 3 rotores y cifrado César con desplazamiento 2
 char cifrarCaracter(char c, std::string& rotor1, std::string& rotor2, std::string& rotor3) {
