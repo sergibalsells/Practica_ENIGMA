@@ -7,13 +7,14 @@
 #include "menu.h"
 #include "processarTxt.h"
 #include "Cifrado.h"
+#include "Descifrado.h"
+
+
 
 int main() {
 
+    ///Punto de entrada de la máquina Enigma
     asignacionMenuPrincipal();
-
-    std::cout << "=== MÁQUINA ENIGMA - FASE 1: GESTIÓN DE ROTORES ===\n";
-
 
     return 0;
 }

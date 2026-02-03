@@ -22,11 +22,11 @@ void introducirMensaje() {
     }
 }
 
-// Función para cifrar un carácter usando los 3 rotores y cifrado César con desplazamiento 2
+// Funciï¿½n para cifrar un carï¿½cter usando los 3 rotores y cifrado Cï¿½sar con desplazamiento 2
 char cifrarCaracter(char c, std::string& rotor1, std::string& rotor2, std::string& rotor3) {
     c = toupper(c);
 
-    // Aplicar cifrado César con desplazamiento 2
+    // Aplicar cifrado Cï¿½sar con desplazamiento 2
     c = 'A' + ((c - 'A' + 2) % 26);
 
     // Paso 1: Rotor 1 (directo)
@@ -41,7 +41,7 @@ char cifrarCaracter(char c, std::string& rotor1, std::string& rotor2, std::strin
     return c;
 }
 
-// Función principal para cifrar un mensaje
+// Funciï¿½n principal para cifrar un mensaje
 void procesoCifrado() {
     std::string mensaje;
     char posR1, posR2, posR3;
@@ -49,7 +49,8 @@ void procesoCifrado() {
     std::cout << "\n=== CIFRADO DE MENSAJE ===\n";
 
     // Pedir posiciones iniciales de los rotores
-    std::cout << "Introduce la posición inicial de los rotores (ejemplo: A B C): ";
+    std::cout << "Introduce la posiciï¿½n inicial de los rotores (ejemplo: A B C): "<< std::endl;
+
     std::cin >> posR1 >> posR2 >> posR3;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -57,7 +58,7 @@ void procesoCifrado() {
     std::cout << "Introduce el mensaje a cifrar: ";
     std::getline(std::cin, mensaje);
 
-    // Procesar el mensaje (quitar símbolos, acentos, convertir a mayúsculas)
+    // Procesar el mensaje (quitar sï¿½mbolos, acentos, convertir a mayï¿½sculas)
     quitarSimbolosEspeciales(mensaje);
     std::cout << "[INFO] Quitamos los simbolos especiales: " << mensaje << std::endl;
 
@@ -72,7 +73,7 @@ void procesoCifrado() {
     std::string rotor2Copy = rotor2.mapeo;
     std::string rotor3Copy = rotor3.mapeo;
 
-    // Ajustar rotores a la posición inicial
+    // Ajustar rotores a la posiciï¿½n inicial
     ajustarRotor(rotor1Copy, posR1);
     ajustarRotor(rotor2Copy, posR2);
     ajustarRotor(rotor3Copy, posR3);
