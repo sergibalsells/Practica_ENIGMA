@@ -6,6 +6,7 @@
 #include "Rotores.h"
 #include "processarTxt.h"
 
+<<<<<<< HEAD
 // Función para descifrar un carácter - CORREGIDA
 char descifrarCaracter(char c, std::string& rotor1, std::string& rotor2, std::string& rotor3) {
     c = toupper(c);
@@ -35,11 +36,45 @@ char descifrarCaracter(char c, std::string& rotor1, std::string& rotor2, std::st
     if (pos != std::string::npos) {
         c = 'A' + static_cast<int>(pos);
     }
+=======
+// Funciï¿½n para pasar un carï¿½cter a travï¿½s de un rotor (en direcciï¿½n inversa para descifrar)
+char pasarPorRotorInverso(const std::string& rotor, char c) {
+    size_t pos = rotor.find(toupper(c));
+    if (pos != std::string::npos) {
+        return static_cast<char>('A' + pos);
+    }
+    return c;
+}
+
+// Funciï¿½n para descifrar un carï¿½cter usando los 3 rotores
+// CHATGPT 
+char descifrarCaracter(char c,
+                       std::string& rotor1,
+                       std::string& rotor2,
+                       std::string& rotor3) {
+    c = toupper(c);
+
+    // Rotor 3 inverse
+    size_t pos = rotor3.find(c);
+    c = static_cast<char>('A' + pos);
+
+    // Rotor 2 inverse
+    pos = rotor2.find(c);
+    c = static_cast<char>('A' + pos);
+
+    // Rotor 1 inverse
+    pos = rotor1.find(c);
+    c = static_cast<char>('A' + pos);
+
+    // Caesar inverse (-2)
+    c = 'A' + ((c - 'A' - 2 + 26) % 26);
+>>>>>>> 28d8cadcd656791bd0fd793b0f5f9cedf856f017
 
     return c;
 }
 
-// Función principal para descifrar un mensaje
+
+// Funciï¿½n principal para descifrar un mensaje
 void procesoDescifrado() {
     std::string mensaje;
     char posR1, posR2, posR3;
@@ -47,7 +82,7 @@ void procesoDescifrado() {
     std::cout << "\n=== DESCIFRADO DE MENSAJE ===\n";
 
     // Pedir posiciones iniciales de los rotores
-    std::cout << "Introduce la posición inicial de los rotores (ejemplo: A B C): ";
+    std::cout << "Introduce la posiciï¿½n inicial de los rotores (ejemplo: A B C): ";
     std::cin >> posR1 >> posR2 >> posR3;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -55,7 +90,7 @@ void procesoDescifrado() {
     std::cout << "Introduce el mensaje a descifrar: ";
     std::getline(std::cin, mensaje);
 
-    // Procesar el mensaje (quitar símbolos, acentos, convertir a mayúsculas)
+    // Procesar el mensaje (quitar sï¿½mbolos, acentos, convertir a mayï¿½sculas)
     quitarSimbolosEspeciales(mensaje);
     std::cout << "[INFO] Quitamos los simbolos especiales: " << mensaje << std::endl;
 
@@ -73,7 +108,7 @@ void procesoDescifrado() {
     std::string rotor2Copy = rotor2.mapeo;
     std::string rotor3Copy = rotor3.mapeo;
 
-    // Ajustar rotores a la posición inicial
+    // Ajustar rotores a la posiciï¿½n inicial
     ajustarRotor(rotor1Copy, posR1);
     ajustarRotor(rotor2Copy, posR2);
     ajustarRotor(rotor3Copy, posR3);

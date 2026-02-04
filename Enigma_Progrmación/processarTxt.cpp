@@ -21,6 +21,7 @@ void quitarSimbolosEspeciales(std::string& mensajeParaCifrar) {
 }
 
 // 2. Quitar acentos
+// Función creada por IA CHATGPT
 std::string quitarAcentos(std::string& mensajeParaCifrar) {
     std::string original = "áàäâãéèëêíìïîóòöôõúùüûñÁÀÄÂÃÉÈËÊÍÌÏÎÓÒÖÔÕÚÙÜÛÑ";
     std::string reemplazo = "aaaaaeeeeiiiiooooouuuunAAAAAEEEEIIIIOOOOOUUUUN";
