@@ -26,17 +26,28 @@ void introducirMensaje() {
 char cifrarCaracter(char c, std::string& rotor1, std::string& rotor2, std::string& rotor3) {
     c = toupper(c);
 
-    // Aplicar cifrado César con desplazamiento 2
-    c = 'A' + ((c - 'A' + 2) % 26);
+    // Verificar que el carácter esté en el rango A-Z
+    if (c < 'A' || c > 'Z') {
+        return c;
+    }
 
     // Paso 1: Rotor 1 (directo)
-    c = rotor1[c - 'A'];
+    if (c - 'A' < rotor1.length()) {
+        c = rotor1[c - 'A'];
+    }
 
     // Paso 2: Rotor 2 (directo)
-    c = rotor2[c - 'A'];
+    if (c - 'A' < rotor2.length()) {
+        c = rotor2[c - 'A'];
+    }
 
     // Paso 3: Rotor 3 (directo)
-    c = rotor3[c - 'A'];
+    if (c - 'A' < rotor3.length()) {
+        c = rotor3[c - 'A'];
+    }
+
+    // Aplicar cifrado César con desplazamiento 2
+    c = 'A' + ((c - 'A' + 2) % 26);
 
     return c;
 }
@@ -66,6 +77,9 @@ void procesoCifrado() {
 
     convertirMayusculas(mensaje);
     std::cout << "[INFO] Convertimos en mayuscula: " << mensaje << std::endl;
+
+    // Quitar espacios para procesar correctamente
+    soloLetras(mensaje);
 
     // Copiar los rotores globales para no modificarlos
     std::string rotor1Copy = rotor1.mapeo;

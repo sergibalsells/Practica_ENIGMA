@@ -6,47 +6,34 @@
 #include "Rotores.h"
 #include "processarTxt.h"
 
-// Función para pasar un carácter a través de un rotor (en dirección inversa para descifrar)
-char pasarPorRotorInverso(const std::string& rotor, char c) {
-    size_t pos = rotor.find(toupper(c));
-    if (pos != std::string::npos) {
-        return static_cast<char>('A' + pos);
-    }
-    return c;
-}
-
-// Función para descifrar un carácter usando los 3 rotores
+// Función para descifrar un carácter - CORREGIDA
 char descifrarCaracter(char c, std::string& rotor1, std::string& rotor2, std::string& rotor3) {
     c = toupper(c);
 
-    // Paso 1: Rotor 1 (directo)
-    c = rotor1[c - 'A'];
+    // Verificar que el carácter esté en el rango A-Z
+    if (c < 'A' || c > 'Z') {
+        return c;
+    }
 
-    // Paso 2: Rotor 2 (directo)
-    c = rotor2[c - 'A'];
+    // PASO 1: Primero deshacer César (-2)
+    c = 'A' + ((c - 'A' - 2 + 26) % 26);
 
-    // Paso 3: Rotor 3 (directo)
-    c = rotor3[c - 'A'];
-
-    // Paso 4: Reflector (simplificado)
-    c = 'A' + ('Z' - (c - 'A'));
-
-    // Paso 5: Rotor 3 (inverso)
+    // PASO 2: Rotor 3 inverso (último del cifrado)
     size_t pos = rotor3.find(c);
     if (pos != std::string::npos) {
-        c = static_cast<char>('A' + pos);
+        c = 'A' + static_cast<int>(pos);
     }
 
-    // Paso 6: Rotor 2 (inverso)
+    // PASO 3: Rotor 2 inverso
     pos = rotor2.find(c);
     if (pos != std::string::npos) {
-        c = static_cast<char>('A' + pos);
+        c = 'A' + static_cast<int>(pos);
     }
 
-    // Paso 7: Rotor 1 (inverso)
+    // PASO 4: Rotor 1 inverso (primero del cifrado)
     pos = rotor1.find(c);
     if (pos != std::string::npos) {
-        c = static_cast<char>('A' + pos);
+        c = 'A' + static_cast<int>(pos);
     }
 
     return c;
@@ -77,6 +64,9 @@ void procesoDescifrado() {
 
     convertirMayusculas(mensaje);
     std::cout << "[INFO] Convertimos en mayuscula: " << mensaje << std::endl;
+
+    // Quitar espacios para procesar correctamente
+    soloLetras(mensaje);
 
     // Copiar los rotores globales para no modificarlos
     std::string rotor1Copy = rotor1.mapeo;
