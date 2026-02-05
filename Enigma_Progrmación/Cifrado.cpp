@@ -26,15 +26,8 @@ void introducirMensaje() {
 char cifrarCaracter(char c, std::string& rotor1, std::string& rotor2, std::string& rotor3) {
     c = toupper(c);
 
-<<<<<<< HEAD
-    // Verificar que el carácter esté en el rango A-Z
-    if (c < 'A' || c > 'Z') {
-        return c;
-    }
-=======
     // Aplicar cifrado Cï¿½sar con desplazamiento 2
     c = 'A' + ((c - 'A' + 2) % 26);
->>>>>>> 28d8cadcd656791bd0fd793b0f5f9cedf856f017
 
     // Paso 1: Rotor 1 (directo)
     if (c - 'A' < rotor1.length()) {
@@ -51,7 +44,7 @@ char cifrarCaracter(char c, std::string& rotor1, std::string& rotor2, std::strin
         c = rotor3[c - 'A'];
     }
 
-    // Aplicar cifrado César con desplazamiento 2
+    // Aplicar cifrado Cï¿½sar con desplazamiento 2
     c = 'A' + ((c - 'A' + 2) % 26);
 
     return c;

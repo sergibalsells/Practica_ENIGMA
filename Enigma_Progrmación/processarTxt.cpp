@@ -23,38 +23,51 @@ void quitarSimbolosEspeciales(std::string& mensajeParaCifrar) {
 // 2. Quitar acentos
 // Función creada por IA CHATGPT
 std::string quitarAcentos(std::string& mensajeParaCifrar) {
-    std::string original = "áàäâãéèëêíìïîóòöôõúùüûñÁÀÄÂÃÉÈËÊÍÌÏÎÓÒÖÔÕÚÙÜÛÑ";
-    std::string reemplazo = "aaaaaeeeeiiiiooooouuuunAAAAAEEEEIIIIOOOOOUUUUN";
+    std::string original = "áàäâãéèëêíìïîóòöôõúùüûñÁÀÄÂÃÉÈËÊÍÌÏÎÓÒÖÔÕÚÙÜÛÑ";//un string todas las possibilidades de letras con simbolos especiales
 
-    for (size_t i = 0; i < mensajeParaCifrar.length(); i++) {
+    std::string reemplazo = "aaaaaeeeeiiiiooooouuuunAAAAAEEEEIIIIOOOOOUUUUN";// un string de la misma cantidad de letras que el string original, son las mismas letra sin el simbolo
+
+    for (size_t i = 0; i < mensajeParaCifrar.length(); i++) {// Recorremos el mensaje
+
         size_t pos = original.find(mensajeParaCifrar[i]);
-        if (pos != std::string::npos) {
+        // se buscan concidencias de letras con simbolos especiales que coincidan con el string original
+
+        if (pos != std::string::npos) { // si se encuentra una, se sustituye por la misma letra sin el simbolo
+
             mensajeParaCifrar[i] = reemplazo[pos];
         }
     }
-    return mensajeParaCifrar;
+    return mensajeParaCifrar; // la funcion devuelve el mismo mensaje sin simbolos especiales 
 }
 
 // 3. Convertir a mayúsculas
 std::string convertirMayusculas(std::string& mensajeParaCifrar) {
-    for (size_t i = 0; i < mensajeParaCifrar.length(); i++) {
-        mensajeParaCifrar[i] = std::toupper(mensajeParaCifrar[i]);
+
+    for (size_t i = 0; i < mensajeParaCifrar.length(); i++) {// Recorremos el mensaje
+
+        mensajeParaCifrar[i] = std::toupper(mensajeParaCifrar[i]); // caracter a caracter se transforman las letras a mayúscula 
     }
     return mensajeParaCifrar;
 }
 
 // 4. Agrupar en grupos de 5 letras
 std::string agruparLetras(std::string& mensajeParaCifrar) {
-    std::string result = "";
-    int count = 0;
 
-    for (size_t i = 0; i < mensajeParaCifrar.length(); i++) {
-        result += mensajeParaCifrar[i];
+    std::string result = "";// se declara una string vacia para ir añadiendo letras 
+
+    int count = 0; //se declara una variable para controlar el numero de letras 
+
+    for (size_t i = 0; i < mensajeParaCifrar.length(); i++) {// Recorremos el mensaje
+
+        result += mensajeParaCifrar[i]; //la letra se añade a la string result
+
         count++;
 
-        if (count == 5) {
+        if (count == 5) {// Una vez se han agrupado 5 letras se separa con espacio
+
             result += ' ';
-            count = 0;
+
+            count = 0; // Se iguala esta variable a 0 para poder repetir el bucle 
         }
     }
     return result;
@@ -70,11 +83,16 @@ void ajustarRotor(std::string& rotor, char letra) {
 
 // Función para dejar solo letras
 void soloLetras(std::string& mensajeParaCifrar) {
-    std::string soloLetras;
-    for (size_t i = 0; i < mensajeParaCifrar.length(); i++) {
-        char c = mensajeParaCifrar[i];
-        if (isalpha(c)) {
-            soloLetras += c;
+
+    std::string soloLetras; se declara una string sin inicializacion para ir añadiendo letras 
+
+    for (size_t i = 0; i < mensajeParaCifrar.length(); i++) {// Recorremos el mensaje
+
+        char letra = mensajeParaCifrar[i]; //Se declara una variable por los caracteres
+
+        if (isalpha(letra)) {//caracter a caracter se comprueba si es una letra
+
+            soloLetras += letra; //si la funcion retorna 1 esa letra se añade a la string creada anteriormente soloLetras
         }
     }
     mensajeParaCifrar = soloLetras;

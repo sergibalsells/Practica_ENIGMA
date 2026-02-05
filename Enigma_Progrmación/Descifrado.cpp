@@ -6,37 +6,6 @@
 #include "Rotores.h"
 #include "processarTxt.h"
 
-<<<<<<< HEAD
-// Función para descifrar un carácter - CORREGIDA
-char descifrarCaracter(char c, std::string& rotor1, std::string& rotor2, std::string& rotor3) {
-    c = toupper(c);
-
-    // Verificar que el carácter esté en el rango A-Z
-    if (c < 'A' || c > 'Z') {
-        return c;
-    }
-
-    // PASO 1: Primero deshacer César (-2)
-    c = 'A' + ((c - 'A' - 2 + 26) % 26);
-
-    // PASO 2: Rotor 3 inverso (último del cifrado)
-    size_t pos = rotor3.find(c);
-    if (pos != std::string::npos) {
-        c = 'A' + static_cast<int>(pos);
-    }
-
-    // PASO 3: Rotor 2 inverso
-    pos = rotor2.find(c);
-    if (pos != std::string::npos) {
-        c = 'A' + static_cast<int>(pos);
-    }
-
-    // PASO 4: Rotor 1 inverso (primero del cifrado)
-    pos = rotor1.find(c);
-    if (pos != std::string::npos) {
-        c = 'A' + static_cast<int>(pos);
-    }
-=======
 // Funciï¿½n para pasar un carï¿½cter a travï¿½s de un rotor (en direcciï¿½n inversa para descifrar)
 char pasarPorRotorInverso(const std::string& rotor, char c) {
     size_t pos = rotor.find(toupper(c));
@@ -68,7 +37,6 @@ char descifrarCaracter(char c,
 
     // Caesar inverse (-2)
     c = 'A' + ((c - 'A' - 2 + 26) % 26);
->>>>>>> 28d8cadcd656791bd0fd793b0f5f9cedf856f017
 
     return c;
 }
