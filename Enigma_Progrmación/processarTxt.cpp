@@ -47,7 +47,7 @@ std::string convertirMayusculas(std::string& mensajeParaCifrar) {
 
         mensajeParaCifrar[i] = std::toupper(mensajeParaCifrar[i]); // caracter a caracter se transforman las letras a mayúscula 
     }
-    return mensajeParaCifrar;
+    return mensajeParaCifrar; // la funcion devuelve el mismo mensaje en letras mayusculas
 }
 
 // 4. Agrupar en grupos de 5 letras
@@ -70,7 +70,7 @@ std::string agruparLetras(std::string& mensajeParaCifrar) {
             count = 0; // Se iguala esta variable a 0 para poder repetir el bucle 
         }
     }
-    return result;
+    return result; // la funcion devuelve el mismo mensaje con las letras agrupadas en grupos de 5  
 }
 
 // Función para ajustar rotor
@@ -95,5 +95,5 @@ void soloLetras(std::string& mensajeParaCifrar) {
             soloLetras += letra; //si la funcion retorna 1 esa letra se añade a la string creada anteriormente soloLetras
         }
     }
-    mensajeParaCifrar = soloLetras;
+    mensajeParaCifrar = soloLetras; // la funcion devuelve solo las letras que habia en el mensaje introduido por el usuaro
 }
