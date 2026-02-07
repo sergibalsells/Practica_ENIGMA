@@ -22,52 +22,53 @@ void introducirMensaje() {
     }
 }
 
-// Funci�n para cifrar un car�cter usando los 3 rotores y cifrado C�sar con desplazamiento 2
+// Funcion para cifrar un caracter usando los 3 rotores y ciframos con cesar con desplazamiento 2 
+// Apoyo de la IA para pasar por los rotores debido a errores al poder esablecer las vueltas en ellos. 
 char cifrarCaracter(char c, std::string& rotor1, std::string& rotor2, std::string& rotor3) {
     c = toupper(c);
 
-    // Aplicar cifrado C�sar con desplazamiento 2
+    // Aplicamos cifrado Cesar con desplazamiento 2
     c = 'A' + ((c - 'A' + 2) % 26);
 
-    // Paso 1: Rotor 1 (directo)
+    // Paso 1: Aplicamos en el Rotor 1 de forma directa
     if (c - 'A' < rotor1.length()) {
         c = rotor1[c - 'A'];
     }
 
-    // Paso 2: Rotor 2 (directo)
+    // Paso 2: Aplicamos en el Rotor 2 de forma directa
     if (c - 'A' < rotor2.length()) {
         c = rotor2[c - 'A'];
     }
 
-    // Paso 3: Rotor 3 (directo)
+    // Paso 3: Aplicamos en el Rotor 3 de forma directa
     if (c - 'A' < rotor3.length()) {
         c = rotor3[c - 'A'];
     }
 
-    // Aplicar cifrado C�sar con desplazamiento 2
+    // Aplicamos cifrado Cesar con desplazamiento 2
     c = 'A' + ((c - 'A' + 2) % 26);
 
     return c;
 }
 
-// Funci�n principal para cifrar un mensaje
+// Funcion principal para cifrar el mensaje que se ponga
 void procesoCifrado() {
     std::string mensaje;
     char posR1, posR2, posR3;
 
     std::cout << "\n=== CIFRADO DE MENSAJE ===\n";
 
-    // Pedir posiciones iniciales de los rotores
+    // Pedimos posiciones iniciales de los rotores
     std::cout << "Introduce la posici�n inicial de los rotores (ejemplo: A B C): "<< std::endl;
 
     std::cin >> posR1 >> posR2 >> posR3;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    // Pedir el mensaje a cifrar
+    //Pedimos el mensaje a cifrar
     std::cout << "Introduce el mensaje a cifrar: ";
     std::getline(std::cin, mensaje);
 
-    // Procesar el mensaje (quitar s�mbolos, acentos, convertir a may�sculas)
+    // Procesamos el mensaje (quitamos simbolos, acentos, convertimos todo a mayusculas)
     quitarSimbolosEspeciales(mensaje);
     std::cout << "[INFO] Quitamos los simbolos especiales: " << mensaje << std::endl;
 
@@ -77,22 +78,22 @@ void procesoCifrado() {
     convertirMayusculas(mensaje);
     std::cout << "[INFO] Convertimos en mayuscula: " << mensaje << std::endl;
 
-    // Quitar espacios para procesar correctamente
+    // Quitamos espacios para procesar correctamente el texto
     soloLetras(mensaje);
 
-    // Copiar los rotores globales para no modificarlos
+    // Copiamos los rotores globales para no modificarlos
     std::string rotor1Copy = rotor1.mapeo;
     std::string rotor2Copy = rotor2.mapeo;
     std::string rotor3Copy = rotor3.mapeo;
 
-    // Ajustar rotores a la posici�n inicial
+    // Ajustamos rotores a la posicion inicial
     ajustarRotor(rotor1Copy, posR1);
     ajustarRotor(rotor2Copy, posR2);
     ajustarRotor(rotor3Copy, posR3);
 
     std::string resultado;
 
-    // Procesar el mensaje
+    // Procesamos el mensaje introducido
     for (char c : mensaje) {
         if (isalpha(c)) {
             char cifrado = cifrarCaracter(c, rotor1Copy, rotor2Copy, rotor3Copy);
@@ -100,11 +101,11 @@ void procesoCifrado() {
         }
     }
 
-    // Agrupar en bloques de 5 letras
+    // Agrupamos en bloques de 5 letras
     std::string resultadoAgrupado = agruparLetras(resultado);
     std::cout << "[INFO] Agrupamos las letras en grupos de 5: " << resultadoAgrupado << std::endl;
 
-    // Guardar el mensaje cifrado en un archivo
+    // Guardamos el mensaje cifrado en un archivo
     std::ofstream fitxer("Missatge.txt");
     if (fitxer.is_open()) {
         fitxer << resultadoAgrupado;

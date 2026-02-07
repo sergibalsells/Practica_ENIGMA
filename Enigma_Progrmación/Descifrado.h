@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
 #include "Rotores.h"
-#include "processarTxt.h"  // Incluimos processarTxt.h para tener acceso a ajustarRotor
+#include "processarTxt.h"  ç
+
+// Incluimos processarTxt.h para tener acceso a ajustarRotor
 
 char pasarPorRotorInverso(const std::string& rotor, char c);
 
