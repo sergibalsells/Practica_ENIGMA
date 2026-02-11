@@ -13,6 +13,27 @@ Les instruccions següents us guiaran per configurar el simulador de màquina En
     - sudo apt-get update --> actualitza el sistema
     - sudo apt-get install build-essential --> per intsal·lar gcc i g++
     - g++ --version --> torna a comprova la versió
+ 
+
+## Caracteristiques Técniques en parts del codi: 
+
+En algunes parts del codi es pot veure que hi han funcions i accions més tecniques que hem fet servir, aquí expliquem les més difícils de poder entrendre. 
+    *En el codi també están explicades en els llocs corresponenets. 
+
+1) std::string& (passatge per referència):
+   En aquest cas ho hem fet servir per a l'eficiència de la memòria, d'aquest cas evitem que el programa creï una 
+   nova còpia del text en cada funció. Treballo amb l'adreça original a la RAM.
+
+2) Operador de mòdul (% 26): 
+   Assegurem la circularitat de l'alfabet, d'aquesta forma Si afegim posicions i anem més enllà de la 'Z', 
+   el mòdul ens retorna a l'inici ('A'). 
+
+3) static_cast<char>:
+   Seguretat tipogràfica. Les operacions matemàtiques retornen enters, així que forço que el resultat torni a ser un caràcter vàlid. 
+
+4) .find():
+   En el codi podem veure que es fan servir .find(), sobretot en el Descifrar.cpp, amb aixó el que hem fet es un analisi invertit,
+   el qeu fem es localitzar directament la posició del caracter xifrat en el rotor per a poder poder així recuperar el seu index original. 
 
 ## Instalació
 
