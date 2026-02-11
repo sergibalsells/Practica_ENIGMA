@@ -35,9 +35,9 @@ Les instruccions següents us guiaran per configurar el simulador de màquina En
 
 ## Executa proves
 
-A continuació s'inclouen proves automatitzades per garantir que el programa funciona correctament i compleix el seu objectiu.
+A continuació s'inclourien proves de funcionament del codi, en aquest cas com es pel professor
+ell ho executarà, es fará la comprovació del codi per ell mateix. 
 
-- 
 
 ## Desplegament
 
@@ -92,4 +92,4 @@ Aquest projecte està sota la Llicència  GPL-3.0 - GNU GENERAL PUBLIC LICENSE V
 
 ## Agraïments
 
-Gràcies als nostres companys de classe per provar-ho i donar-nos la seves opinions i crítiques.
+Gràcies al professor per ajudar-nos amb el seguiment i resoldrens els dubtes que hem pogut tenir durant el projecte. 
