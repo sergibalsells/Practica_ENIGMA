@@ -13,7 +13,7 @@
 
 int main() {
 
-    ///Punto de entrada de la máquina Enigma
+    //Funcion`para establecer el punto de entrada de la máquina Enigma
     asignacionMenuPrincipal();
 
     return 0;

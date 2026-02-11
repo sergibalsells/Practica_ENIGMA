@@ -1,24 +1,26 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <limits> // Para limpiar el buffer del cin
+#include <limits> // Libreria que sirve para limpiar el buffer del cin
 #include "Rotores.h"
 
 
-// Rotores predefinidos (como en tu código original)
+// Predefinimos rotores principales
 Rotor rotor1 = { "MNBVCXZLKJHGFDSAPOIUYTREWQ", 'Z' };
 Rotor rotor2 = { "ZYXWVUTSRQPONMLKJIHGFEDCBA", 'I' };
 Rotor rotor3 = { "XYZWVUTSRQPONMLKJIHGFEDCBA", 'L' };
 
-// Función para validar un rotor
+// Función para validar un rotor ( Tuvimos muchos problemas por el tema de napeo de las posiciones de rotores
+// Así que hubo una parte que usamos la IA para que nos detectara los errores que nos impedian ejecutarlo bien)
+
 bool validarRotor(const std::string& mapeo, char notch) {
-    // 1. Verificar longitud de 26 letras
+    // 1. Verificamos longitud de 26 letras
     if (mapeo.length() != 26) {
         std::cerr << "[ERROR] El rotor debe tener exactamente 26 letras.\n";
         return false;
     }
 
-    // 2. Verificar que solo contiene letras (A-Z, sin espacios ni símbolos)
+    // 2. Verificamo que solo contiene letras (A-Z, sin espacios ni símbolos)
     for (char c : mapeo) {
         if (!isalpha(c)) {
             std::cerr << "[ERROR] El rotor solo puede contener letras (A-Z).\n";
@@ -26,7 +28,7 @@ bool validarRotor(const std::string& mapeo, char notch) {
         }
     }
 
-    // 3. Verificar que no hay letras repetidas
+    // 3. Verificamo que no hay letras repetidas
     for (size_t i = 0; i < mapeo.length(); i++) {
         for (size_t j = i + 1; j < mapeo.length(); j++) {
             if (toupper(mapeo[i]) == toupper(mapeo[j])) {
@@ -36,7 +38,7 @@ bool validarRotor(const std::string& mapeo, char notch) {
         }
     }
 
-    // 4. Verificar que el notch está en el mapeo
+    // 4. Verificamo que el notch está en el mapeo
     bool notchValido = false;
     for (char c : mapeo) {
         if (toupper(c) == toupper(notch)) {
@@ -74,9 +76,9 @@ void editarRotor(Rotor& rotor, const std::string& nombre) {
 
     std::cout << "Introduce el nuevo notch (1 letra del mapeo): ";
     std::cin >> nuevoNotch;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpiar buffer
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpiamos buffer
 
-    // Validar antes de asignar
+    // Validar  rotor antes de asignar
     if (validarRotor(nuevoMapeo, nuevoNotch)) {
         rotor.mapeo = nuevoMapeo;
         rotor.notch = toupper(nuevoNotch);
@@ -124,7 +126,7 @@ void asignacionMenuRotores() {
     do {
         imprimirMenuRotores();
         std::cin >> opcion;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpiar buffer
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpiamos buffer
 
         switch (opcion) {
         case 1:
@@ -153,7 +155,7 @@ void asignacionMenuRotores() {
         }
     } while (opcion != 0);
 }
-//CHATGPT
+//Ayuda de la IA en el tema de la gestion de Archivos y Rotores
 bool cargarRotorDesdeArchivo(Rotor& rotor, const std::string& nombreArchivo) {
     std::ifstream archivo(nombreArchivo);
     if (!archivo.is_open()) {

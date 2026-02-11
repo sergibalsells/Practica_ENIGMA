@@ -8,7 +8,7 @@
 
 // Función para imprimir el menú principal
 void imprimirMenuPrincipal() {
-    //Mostrar opciones de menú
+    //Mostramos las opciones del menú
     std::cout << "       ENIGMA\n";
     std::cout << "-------------------\n";
     std::cout << "1. Cifrar mensaje\n";
