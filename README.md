@@ -56,8 +56,8 @@ En algunes parts del codi es pot veure que hi han funcions i accions més tecniq
 
 ## Executa proves
 
-A continuació s'inclourien proves de funcionament del codi, en aquest cas com es pel professor
-ell ho executarà, es fará la comprovació del codi per ell mateix. 
+A continuació s'inclourien proves de funcionament del codi, en aquest cas com es per al professor
+ell ho executarà, es fará la comprovació del codi per a ell mateix. 
 
 
 ## Desplegament
