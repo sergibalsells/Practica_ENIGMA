@@ -104,8 +104,7 @@ Assegureu-vos que el vostre codi segueix l'estil existent i garanteix el correct
 
 ## Autors:
 
-Sergi Ballsells
-Simarprit Singh I Kaur
+Sergi Ballsells i Simarprit Singh I Kaur
 
 ## Licencia:
 

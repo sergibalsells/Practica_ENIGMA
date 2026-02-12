@@ -10,10 +10,9 @@
 #include "Descifrado.h"
 
 
-
 int main() {
 
-    //Funcion`para establecer el punto de entrada de la máquina Enigma
+    //Funcion para establecer el punto de entrada de la máquina Enigma
     asignacionMenuPrincipal();
 
     return 0;
