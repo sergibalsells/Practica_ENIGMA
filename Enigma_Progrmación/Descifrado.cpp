@@ -25,8 +25,10 @@ char descifrarCaracter(char c,
     c = toupper(c);
 
     //Aplicamos Rotor 3 de forma inversa
-    size_t pos = rotor3.find(c);
-    c = static_cast<char>('A' + pos);
+    size_t pos = rotor3.find(c); //En este caso loq ue hemos hecho es que 
+    c = static_cast<char>('A' + pos); 
+    // En este caso hemos establecido  es estatic char para lo siguiente: 
+   //Las operaciones matemáticas devuelven enteros, de esta forma fuerzamos que el resultado vuelva a ser un carácter válido.
 
     //Aplicamos Rotor 2 de forma inversa
     pos = rotor2.find(c);
@@ -37,7 +39,8 @@ char descifrarCaracter(char c,
     c = static_cast<char>('A' + pos);
 
     // Aplicamos Cesar de forma inversa (-2)
-    c = 'A' + ((c - 'A' - 2 + 26) % 26);
+    c = 'A' + ((c - 'A' - 2 + 26) % 26); // En este caso lo que hemos decidido hacer es garantizar la circularidad del abecedario.
+    //Si sumamos posiciones y paso de la 'Z', el módulo nos devuelva al principio ('A').
 
     return c;
 }

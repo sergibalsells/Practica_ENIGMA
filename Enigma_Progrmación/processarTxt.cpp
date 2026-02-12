@@ -75,7 +75,8 @@ std::string agruparLetras(std::string& mensajeParaCifrar) {
 
 // Función para ajustar rotor
 void ajustarRotor(std::string& rotor, char letra) {
-    size_t pos = rotor.find(toupper(letra));
+    size_t pos = rotor.find(toupper(letra)); // Ene ste caso lo que hacemos con el .find() es para realizar la busqueda inversa, 
+    // Lo hacemos localizando la posicion del caracter cifrado en el rotor para recuperar su indice original. 
     if (pos != std::string::npos) {
         rotor = rotor.substr(pos) + rotor.substr(0, pos);
     }

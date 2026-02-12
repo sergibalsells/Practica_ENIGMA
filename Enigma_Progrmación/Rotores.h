@@ -18,6 +18,9 @@ extern Rotor rotor3;
 
 // Declaracion de funciones
 bool validarRotor(const std::string& mapeo, char notch);
+// En estos casos el string& lo usamos para eficiencia de memoria. 
+// De esta forma evitamos que el programa cree una copia nueva del texto en cada función.
+// Lo que hacemos es Trabajar sobre la dirección original en RAM. 
 
 void mostrarRotores();
 
